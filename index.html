@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0912" />
+  <meta name="description" content="VYBE — a better space for your conversations." />
+  <title>VYBE — Conversations, Reimagined</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <div class="site-glow glow-one"></div>
+  <div class="site-glow glow-two"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="#" class="brand">
+      <span class="brand-icon"><i data-lucide="message-circle"></i></span>
+      <span>VYBE<span class="brand-dot">.</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#about" class="nav-link">About</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-ghost" id="navSignIn">Sign in</button>
+      <button class="btn btn-primary nav-cta" id="navGetStarted">
+        Get started <i data-lucide="arrow-up-right"></i>
+      </button>
+    </div>
+
+    <button class="mobile-menu" id="mobileMenuBtn" aria-label="Toggle navigation">
+      <i data-lucide="menu"></i>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero section-wrap" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span class="eyebrow-pulse"></span>
+          A NEW WAY TO CONNECT
+          <i data-lucide="sparkles"></i>
+        </div>
+
+        <h1>
+          Your people.<br />
+          Your moments.<br />
+          <span class="gradient-text">Your VYBE.</span>
+        </h1>
+
+        <p class="hero-description">
+          Conversations should feel closer. Share your thoughts,
+          exchange moments and stay connected with the people
+          who make your world better.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-large" id="heroGetStarted">
+            Start a conversation
+            <i data-lucide="arrow-up-right"></i>
+          </button>
+          <a href="#features" class="btn btn-outline btn-large">
+            Explore VYBE <i data-lucide="play-circle"></i>
+          </a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="avatar-stack">
+            <span class="mini-avatar avatar-a">A</span>
+            <span class="mini-avatar avatar-b">S</span>
+      
+            <span class="mini-avatar avatar-d"><i data-lucide="heart"></i></span>
+          </div>
+          <div class="trust-copy">
+            <div class="trust-stars">★★★★★</div>
+            <p>A little closer, every day.</p>
+          </div>
+        </div>
+
+        <div class="hero-bottom-note">
+          <span class="note-line"></span>
+          MADE FOR MEANINGFUL CONNECTIONS
+        </div>
+      </div>
+
+      <!-- LIVE-LOOKING CHAT PREVIEW -->
+      <div class="hero-visual">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="floating-tag tag-top">
+          <span class="tag-icon purple"><i data-lucide="zap"></i></span>
+          <span><strong>Instant messages</strong><small>Right when you need them</small></span>
+        </div>
+
+        <div class="chat-window">
+          <div class="chat-window-top">
+            <div class="window-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="preview-label">YOUR SPACE</span>
+            <button class="window-more" aria-label="More options">
+              <i data-lucide="ellipsis"></i>
+            </button>
+          </div>
+
+          <div class="chat-layout">
+            <aside class="preview-sidebar">
+              <div class="preview-logo">
+                <span class="brand-icon small"><i data-lucide="message-circle"></i></span>
+              </div>
+              <div class="preview-side-icon selected"><i data-lucide="messages-square"></i></div>
+              <div class="preview-side-icon"><i data-lucide="users"></i></div>
+              <div class="preview-side-icon"><i data-lucide="settings-2"></i></div>
+              <div class="preview-side-bottom"><i data-lucide="circle-help"></i></div>
+            </aside>
+
+            <div class="preview-main">
+              <div class="preview-heading">
+                <div>
+                  <span class="preview-kicker">YOUR INBOX</span>
+                  <h3>Messages<span class="count-badge">3</span></h3>
+                </div>
+                <span class="new-chat-icon"><i data-lucide="square-pen"></i></span>
+              </div>
+
+              <div class="preview-search">
+                <i data-lucide="search"></i>
+                <span>Search conversations</span>
+                <kbd>⌘ K</kbd>
+              </div>
+
+              <div class="conversation-list">
+                <div class="conversation active-conversation">
+                  <div class="person-avatar person-one">S<span class="online-dot"></span></div>
+                  <div class="person-info">
+                    <div class="person-top"><strong>Sophia Miller</strong><time>Now</time></div>
+                    <p>That sounds amazing! 💜</p>
+                  </div>
+                  <span class="unread-dot"></span>
+                </div>
+
+                <div class="conversation">
+                  <div class="person-avatar person-two">J<span class="online-dot"></span></div>
+                  <div class="person-info">
+                    <div class="person-top"><strong>James Wilson</strong><time>2m</time></div>
+                    <p>Sent you the photos ✨</p>
+                  </div>
+                </div>
+
+                <div class="conversation">
+                  <div class="person-avatar person-three">E</div>
+                  <div class="person-info">
+                    <div class="person-top"><strong>Emma Davis</strong><time>18m</time></div>
+                    <p>See you tomorrow!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-divider"></div>
+
+              <div class="active-chat">
+                <div class="active-chat-header">
+                  <div class="person-avatar person-one large-avatar">S<span class="online-dot"></span></div>
+                  <div class="active-person-info">
+                    <strong>Sophia Miller</strong>
+                    <span><i class="status-dot"></i> Active now</span>
+                  </div>
+                  <div class="chat-header-actions">
+                    <span><i data-lucide="phone"></i></span>
+                    <span><i data-lucide="video"></i></span>
+                  </div>
+                </div>
+
+                <div class="chat-date"><span>TODAY</span></div>
+
+                <div class="message-row incoming">
+                  <div class="person-avatar person-one tiny-avatar">S</div>
+                  <div class="message-content">
+                    <div class="message-bubble received">
+                      Hey! Have you seen the new VYBE design? ✨
+                    </div>
+                    <time>10:42 AM</time>
+                  </div>
+                </div>
+
+                <div class="message-row outgoing">
+                  <div class="message-content">
+                    <div class="message-bubble sent">
+                      Yesss! It's such a vibe 💜
+                    </div>
+                    <time>10:43 AM <i data-lucide="check-check"></i></time>
+                  </div>
+                </div>
+
+                <div class="message-row incoming">
+                  <div class="person-avatar person-one tiny-avatar">S</div>
+                  <div class="message-content">
+                    <div class="message-bubble received">
+                      That sounds amazing! 💜
+                    </div>
+                    <time>10:43 AM</time>
+                  </div>
+                </div>
+
+                <div class="typing-preview">
+                  <span></span><span></span><span></span>
+                  <small>Sophia is typing</small>
+                </div>
+
+                <div class="preview-composer">
+                  <i data-lucide="plus"></i>
+                  <span>Write a message...</span>
+                  <i data-lucide="smile"></i>
+                  <span class="composer-send"><i data-lucide="arrow-up"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-window-footer">
+            <span><i data-lucide="shield-check"></i> YOUR SPACE, YOUR PEOPLE</span>
+            <span class="footer-live"><i></i> PREVIEW</span>
+          </div>
+        </div>
+
+        <div class="floating-tag tag-bottom">
+          <span class="tag-icon green"><i data-lucide="check-check"></i></span>
+          <span><strong>Message delivered</strong><small>Your moments, in sync.</small></span>
+        </div>
+
+        <div class="visual-caption"><span></span> A SMALL GLIMPSE OF WHAT'S POSSIBLE</div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="stats-strip section-wrap" id="about">
+      <div class="stat-item">
+        <span class="stat-icon"><i data-lucide="message-square"></i></span>
+        <div><strong>Real-time</strong><span>Messaging experience</span></div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon"><i data-lucide="heart-handshake"></i></span>
+        <div><strong>More personal</strong><span>Conversations that matter</span></div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon"><i data-lucide="shield-check"></i></span>
+        <div><strong>Privacy-minded</strong><span>Built with care</span></div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon"><i data-lucide="smartphone"></i></span>
+        <div><strong>Your devices</strong><span>Responsive by design</span></div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section section-wrap" id="features">
+      <div class="section-heading">
+        <div class="eyebrow"><span class="eyebrow-pulse"></span> THE VYBE EXPERIENCE</div>
+        <h2>Less distance.<br /><span class="gradient-text">More connection.</span></h2>
+        <p>Everything you need to make every conversation feel a little more personal.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card feature-large">
+          <div class="feature-top">
+            <span class="feature-icon"><i data-lucide="messages-square"></i></span>
+            <span class="feature-number">01 / CHAT</span>
+          </div>
+          <div class="mini-chat-art">
+            <div class="art-bubble art-left">Hey, how's your day going? <span>10:24</span></div>
+            <div class="art-bubble art-right">Better now that you're here ✨ <span>10:25 ✓✓</span></div>
+            <div class="art-wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <h3>Conversations in real time</h3>
+          <p>Send and receive messages as they happen, with a chat experience designed to feel effortless.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-top">
+            <span class="feature-icon pink-icon"><i data-lucide="image"></i></span>
+            <span class="feature-number">02 / SHARE</span>
+          </div>
+          <div class="feature-art share-art">
+            <span class="share-tile tile-one"><i data-lucide="image"></i></span>
+            <span class="share-tile tile-two"><i data-lucide="file-text"></i></span>
+            <span class="share-tile tile-three"><i data-lucide="mic"></i></span>
+            <span class="share-spark">✦</span>
+          </div>
+          <h3>Share your world</h3>
+          <p>Make room for photos, files and voice messages as sharing features are added.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-top">
+            <span class="feature-icon green-icon"><i data-lucide="users"></i></span>
+            <span class="feature-number">03 / CONNECT</span>
+          </div>
+          <div class="feature-art people-art">
+            <span class="people-orbit"></span>
+            <span class="people-bubble bubble-one">A</span>
+            <span class="people-bubble bubble-two">S</span>
+
+            <span class="people-bubble bubble-four"><i data-lucide="heart"></i></span>
+          </div>
+          <h3>Your people, in one place</h3>
+          <p>Find other registered VYBE users and start private conversations with them.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section section-wrap">
+      <div class="cta-card">
+        <div class="cta-glow"></div>
+        <div class="cta-content">
+          <span class="eyebrow"><span class="eyebrow-pulse"></span> YOUR NEXT CONVERSATION STARTS HERE</span>
+          <h2>Come find your <span class="gradient-text">VYBE.</span></h2>
+          <p>A fresh space for the people and moments that matter to you.</p>
+          <button class="btn btn-primary btn-large" id="bottomGetStarted">
+            Join VYBE <i data-lucide="arrow-up-right"></i>
+          </button>
+        </div>
+        <div class="cta-decoration"><i data-lucide="message-circle-heart"></i></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section-wrap">
+    <a href="#" class="brand footer-brand">
+      <span class="brand-icon"><i data-lucide="message-circle"></i></span>
+      <span>VYBE<span class="brand-dot">.</span></span>
+    </a>
+    <p>Made for conversations that mean something.</p>
+    <span class="footer-copy">© 2026 VYBE. Made with care.</span>
+  </footer>
+
+  <!-- AUTHENTICATION MODAL -->
+  <div class="modal-overlay" id="authModal" aria-hidden="true">
+    <div class="auth-modal">
+      <button class="modal-close" id="closeAuthModal" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="modal-brand">
+        <span class="brand-icon"><i data-lucide="message-circle"></i></span>
+        <span>VYBE<span class="brand-dot">.</span></span>
+      </div>
+
+      <div class="auth-heading">
+        <span class="eyebrow"><span class="eyebrow-pulse"></span> YOUR SPACE IS WAITING</span>
+        <h2 id="authTitle">Welcome back.</h2>
+        <p id="authSubtitle">Sign in to reconnect with your people.</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" type="button">Sign in</button>
+        <button class="auth-tab" id="signupTab" type="button">Create account</button>
+      </div>
+
+      <form id="authForm">
+        <div class="form-field" id="nameField" hidden>
+          <label for="name">Your name</label>
+          <div class="input-wrap">
+            <i data-lucide="user-round"></i>
+            <input id="name" name="name" type="text" placeholder="How should we call you?" autocomplete="name" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email address</label>
+          <div class="input-wrap">
+            <i data-lucide="mail"></i>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <i data-lucide="lock-keyhole"></i>
+            <input id="password" name="password" type="password" placeholder="At least 6 characters" autocomplete="current-password" minlength="6" required />
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password">
+              <i data-lucide="eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <p class="auth-message" id="authMessage" role="status"></p>
+
+        <button type="submit" class="btn btn-primary auth-submit" id="submitBtn">
+          <span id="submitBtnText">Sign in to VYBE</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </form>
+
+      <p class="auth-terms">By continuing, you agree to use VYBE respectfully and responsibly.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+  <script type="module" src="./app.js"></script>
+  
+<!-- VYBE CHAT DASHBOARD -->
+<section id="chatDashboard" class="chat-dashboard" hidden>
+  <aside class="chat-sidebar">
+    <div class="chat-brand">
+      <span class="brand-icon">V</span>
+      <span>VYBE</span>
+    </div>
+
+    <div class="chat-user-profile">
+      <div class="user-avatar" id="currentUserAvatar">A</div>
+      <div>
+        <h3 id="currentUserName">Your Name</h3>
+        <p id="currentUserEmail">you@example.com</p>
+      </div>
+      <button id="logoutBtn" class="logout-btn" type="button">
+        <i data-lucide="log-out"></i>
+      </button>
+    </div>
+
+    <div class="chat-search">
+      <i data-lucide="search"></i>
+      <input id="userSearch" type="search" placeholder="Search people..." />
+    </div>
+
+    <h4 class="sidebar-heading">PEOPLE</h4>
+    <div id="usersList" class="users-list">
+      <p class="empty-chat-text">Loading people...</p>
+    </div>
+  </aside>
+
+  <main class="chat-main">
+    <div id="chatWelcome" class="chat-welcome">
+      <div class="welcome-icon">
+        <i data-lucide="messages-square"></i>
+      </div>
+      <h2>Your space. Your people.</h2>
+      <p>Choose someone from the sidebar to start a conversation.</p>
+    </div>
+
+    <section id="activeChat" class="active-chat" hidden>
+      <header class="active-chat-header">
+        <div class="user-avatar" id="activeChatAvatar">U</div>
+        <div>
+          <h3 id="activeChatName">Chat</h3>
+          <p id="activeChatStatus">VYBE conversation</p>
+        </div>
+      </header>
+
+      <div id="messagesList" class="messages-list"></div>
+
+      <form id="messageForm" class="message-form">
+        <input
+          id="messageInput"
+          type="text"
+          placeholder="Write a message..."
+          maxlength="2000"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" aria-label="Send message">
+          <i data-lucide="send"></i>
+        </button>
+      </form>
+    </section>
+  </main>
+</section>
+
+</body>
+</html>
