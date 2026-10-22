@@ -86,6 +86,8 @@ let allVYBEUsers = [];
 let stopUsersListener = null;
 let stopMessagesListener = null;
 let activeChatId = null;
+Object.defineProperty(window, "fxChatId", { get: () => activeChatId });
+window.fxOpen = (person) => openVYBEChat(person);
 let chatOpenToken = 0;
 
 let mediaRecorder = null;
@@ -844,7 +846,16 @@ async function deleteMessageForEveryone(message) {
   }
 
   try {
-    await deleteDoc(doc(db, "chats", message.chatId, "messages", message.id));
+    // Soft delete: document rehta hai, sirf content mit jata hai -> dono taraf "This message was deleted" dikhega
+    await updateDoc(doc(db, "chats", message.chatId, "messages", message.id), {
+      deleted: true,
+      deletedAt: Date.now(),
+      deletedBy: user.uid,
+      text: "",
+      mediaUrl: "",
+      capsuleText: "",
+      reactions: []
+    });
     closeMessageDeleteMenu();
   } catch (error) {
     showFirebaseError("Delete for everyone error", error);
@@ -879,7 +890,7 @@ function showMessageDeleteMenu(event, message) {
 
   addMenuButton("Delete for me", () => deleteMessageForMe(message), true);
 
-  if (message.senderId === user.uid) {
+  if (message.senderId === user.uid && !message.deleted) {
     addMenuButton("Delete for everyone", () => deleteMessageForEveryone(message), true);
   }
 
@@ -1162,7 +1173,15 @@ function addMessageToScreen(message) {
   const bubble = document.createElement("div");
   bubble.className = "vybe-message-bubble";
 
-  if (message.type === "image" && message.mediaUrl) {
+  if (message.deleted) {
+    bubble.classList.add("vybe-deleted-bubble");
+    bubble.textContent = message.senderId === user.uid
+      ? "🚫 You deleted this message"
+      : "🚫 This message was deleted";
+  } else if (message.type === "poll" && message.poll) {
+    bubble.classList.add("fx-poll-bubble");
+    window.fxPoll?.(bubble, message);
+  } else if (message.type === "image" && message.mediaUrl) {
     bubble.classList.add("media-bubble");
 
     const image = document.createElement("img");
@@ -1195,9 +1214,11 @@ function addMessageToScreen(message) {
     bubble.appendChild(wrapper);
   } else {
     bubble.textContent = message.text || "";
+    window.fxCapsule?.(bubble, message);
   }
 
   row.appendChild(bubble);
+  window.fxBubble?.(bubble, message);
 
   const menuButton = document.createElement("button");
   menuButton.type = "button";
@@ -1220,7 +1241,7 @@ function addMessageToScreen(message) {
   });
 
   row.appendChild(menuButton);
-  renderMessageReactions(message, row);
+  if (!message.deleted) renderMessageReactions(message, row);
 
   row.addEventListener("contextmenu", (event) => {
     event.preventDefault();
@@ -1258,7 +1279,7 @@ async function openVYBEChat(person) {
   const user = auth.currentUser;
   if (!user || !person?.uid) return;
 
-  const chatId = makeChatId(user.uid, person.uid);
+  const chatId = person.chatId || makeChatId(user.uid, person.uid);
   const token = ++chatOpenToken;
 
   activeChatId = chatId;
@@ -1301,7 +1322,7 @@ async function openVYBEChat(person) {
     } else {
       const participants = chatSnapshot.data().participants || [];
 
-      if (!participants.includes(user.uid) || !participants.includes(person.uid)) {
+      if (!participants.includes(user.uid) || (!person.chatId && !participants.includes(person.uid))) {
         throw new Error("Chat participants do not match.");
       }
     }
@@ -1317,6 +1338,13 @@ async function openVYBEChat(person) {
       if (!messagesList || activeChatId !== chatId || token !== chatOpenToken) {
         return;
       }
+
+      snapshot.docChanges().forEach((change) => {
+        const d = change.doc.data();
+        if (change.type === "modified" && d.deleted && d.senderId !== auth.currentUser?.uid) {
+          window.fxToast?.(`🚫 ${window.fxName?.(d.senderId) || "Someone"} ne ek message delete kar diya`);
+        }
+      });
 
       messagesList.replaceChildren();
 
