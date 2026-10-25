@@ -803,6 +803,7 @@ async function saveMediaMessage(chatId, type, mediaUrl) {
     mediaUrl,
     createdAt: serverTimestamp()
   });
+  window.vx?.touch?.(chatId, type === "image" ? "📷 Photo" : "🎤 Voice message");
 }
 
 /* ================= DELETE MENU ================= */
@@ -888,6 +889,7 @@ function showMessageDeleteMenu(event, message) {
     menu.appendChild(button);
   }
 
+  window.vx?.menu?.(message, addMenuButton, closeMessageDeleteMenu);
   addMenuButton("Delete for me", () => deleteMessageForMe(message), true);
 
   if (message.senderId === user.uid && !message.deleted) {
@@ -1165,6 +1167,8 @@ function addMessageToScreen(message) {
     message.hiddenFor.includes(user.uid)
   ) return;
 
+  if (window.vx?.cleared?.(message)) return;
+
   const row = document.createElement("div");
   row.className = message.senderId === user.uid
     ? "vybe-message-row mine"
@@ -1181,6 +1185,8 @@ function addMessageToScreen(message) {
   } else if (message.type === "poll" && message.poll) {
     bubble.classList.add("fx-poll-bubble");
     window.fxPoll?.(bubble, message);
+  } else if (message.type === "location" && window.vx) {
+    window.vx.loc(bubble, message);
   } else if (message.type === "image" && message.mediaUrl) {
     bubble.classList.add("media-bubble");
 
@@ -1191,7 +1197,7 @@ function addMessageToScreen(message) {
     image.loading = "lazy";
 
     image.addEventListener("click", () => {
-      window.open(message.mediaUrl, "_blank", "noopener,noreferrer");
+      if (window.vx) window.vx.lightbox(message.mediaUrl); else window.open(message.mediaUrl, "_blank", "noopener,noreferrer");
     });
 
     bubble.appendChild(image);
@@ -1215,10 +1221,12 @@ function addMessageToScreen(message) {
   } else {
     bubble.textContent = message.text || "";
     window.fxCapsule?.(bubble, message);
+    if (!message.capsule) window.vx?.text?.(bubble, message);
   }
 
   row.appendChild(bubble);
   window.fxBubble?.(bubble, message);
+  window.vx?.decorate?.(bubble, message, row);
 
   const menuButton = document.createElement("button");
   menuButton.type = "button";
@@ -1902,6 +1910,7 @@ messageForm?.addEventListener("submit", async (event) => {
   const chatId = activeChatId;
 
   if (!user || !chatId || !text) return;
+  if (window.vx?.editing && await window.vx.submitEdit(text)) return;
 
   const button = messageForm.querySelector('button[type="submit"]');
   if (button) button.disabled = true;
@@ -1923,8 +1932,10 @@ messageForm?.addEventListener("submit", async (event) => {
       text,
       type: "text",
       senderId: user.uid,
+      ...(window.vx?.takeReply?.() || {}),
       createdAt: serverTimestamp()
     });
+    window.vx?.touch?.(chatId, text);
 
     if (activeChatId === chatId && messageInput) {
       messageInput.value = "";
