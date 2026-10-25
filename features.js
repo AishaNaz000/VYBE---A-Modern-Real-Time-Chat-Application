@@ -295,6 +295,7 @@ function composeCapsule() {
     send.disabled = true;
     try {
       await addDoc(collection(db, "chats", chatId, "messages"), { senderId: me.uid, type: "text", text: "⏳ Time capsule", capsule: true, capsuleText: text, unlockAt: when, createdAt: serverTimestamp() });
+      window.vx?.touch?.(chatId, "⏳ Time capsule");
       if (input && input.value.trim() === text) input.value = "";
       close();
     } catch (e) { note.textContent = "Error: " + e.message; send.disabled = false; }
@@ -453,6 +454,7 @@ function composePoll() {
     send.disabled = true;
     try {
       await addDoc(collection(db, "chats", chatId, "messages"), { senderId: me.uid, type: "poll", text: "📊 " + question, poll: { question, options, multiple: multi.checked }, votes: {}, createdAt: serverTimestamp() });
+      window.vx?.touch?.(chatId, "📊 " + question);
       close();
     } catch (e) { note.textContent = "Error: " + e.message; send.disabled = false; }
   };
